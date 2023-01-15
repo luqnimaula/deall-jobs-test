@@ -47,6 +47,7 @@ const Products: React.FC<ProductsProps> = ({
 
   useEffect(() => {
     getCategories()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
   useEffect(() => {
@@ -55,7 +56,8 @@ const Products: React.FC<ProductsProps> = ({
       router.pathname.replace('[slug]', router?.query?.slug as string),
       {page, limit, q}
     )
-  }, [page, limit, q, router?.query?.slug])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page, limit, q, router?.query?.slug, router.pathname])
 
   return (
     <div className='w-full space-y-3'>

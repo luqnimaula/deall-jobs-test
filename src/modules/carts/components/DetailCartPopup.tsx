@@ -32,6 +32,7 @@ const DetailCartPopup: React.FC<Props> = (props) => {
         setLoading(false)
       }
     })()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.id])
 
   return (

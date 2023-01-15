@@ -26,7 +26,8 @@ const Carts: React.FC<CartsProps> = ({
   const [cartId, setCartId] = useState<number>(0)
   
   useEffect(() => {
-    fetchList(router.pathname, {page, limit})
+    fetchList('/carts', {page, limit})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, limit])
 
   return (
