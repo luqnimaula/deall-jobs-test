@@ -1,0 +1,35 @@
+{
+  "env": {
+    "browser": true,
+    "es2020": true,
+    "node": true
+  },
+  "extends": [
+    "next",
+    "prettier",
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["react", "@typescript-eslint"],
+  "rules": {
+    "no-unused-vars": "error",
+    "no-extra-semi": "error",
+    "prefer-const": "warn",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "react/display-name": "off",
+    "import/no-anonymous-default-export": "off"
+  },
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "ecmaFeatures": {
+      "modules": true,
+      "jsx": true
+    }
+  }
+}
