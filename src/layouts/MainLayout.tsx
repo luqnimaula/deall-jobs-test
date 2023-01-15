@@ -41,8 +41,12 @@ const MainLayout: React.FC<Props> = ({ title, children }) => {
       <main>
         <div className='grid grid-cols-12 lg:min-h-[100vh]'>
           <div className='col-span-12 lg:col-span-3 xl:col-span-2'>
-            <Link href='/' className='flex h-[5rem]'>
-              <div className='text-3xl font-semibold m-auto'>Dashboard</div>
+            <Link href='/' className='flex h-[7rem]'>
+              <div className='m-auto text-center'>
+                <div className='text-3xl font-semibold'>Dashboard</div>
+                <div className='text-sm font-semibold'>Luqni Maulana</div>
+                <div className='text-xs font-semibold'>maulana.7jr@gmail.com</div>
+              </div>
             </Link>
             <div>
               {menus.map(({ title, href, active }, index) => (
