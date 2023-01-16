@@ -104,7 +104,7 @@ const Products: React.FC<ProductsProps> = ({
               href={`/products/category/${value}`}
               className={clsxm(
                 'cursor-pointer px-2 py-1 text-xs rounded-md',
-                router?.query?.slug === value ? 'bg-sky-400' : 'bg-gray-200 hover:bg-gray-300 dark:bg-theme-6'
+                router?.query?.slug === value ? 'bg-sky-400 dark:bg-sky-500' : 'bg-gray-200 hover:bg-gray-300 dark:bg-theme-6 hover:dark:bg-theme-8'
               )}
             >
               {value}
