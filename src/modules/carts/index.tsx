@@ -38,27 +38,27 @@ const Carts: React.FC<CartsProps> = ({
             <thead className='text-sm'>
               <tr>
                 <th className='align-top text-left w-[2rem]'>#</th>
-                <th className='align-top text-left w-[14rem] cursor-pointer'>
+                <th className='align-top text-left w-[14rem]'>
                   <div className='inline-flex items-center gap-x-3'>
                     <span>Products</span>
                   </div>
                 </th>
-                <th className='align-top text-left w-[10rem] cursor-pointer'>
+                <th className='align-top text-left w-[10rem]'>
                   <div className='inline-flex items-center gap-x-3'>
                     <span>Total</span>
                   </div>
                 </th>
-                <th className='align-top text-left w-[8rem] cursor-pointer'>
+                <th className='align-top text-left w-[8rem]'>
                   <div className='inline-flex items-center gap-x-3'>
                     <span>Discounted&nbsp;Total</span>
                   </div>
                 </th>
-                <th className='align-top text-left w-[8rem] cursor-pointer'>
+                <th className='align-top text-left w-[8rem]'>
                   <div className='inline-flex items-center gap-x-3'>
                     <span>Total&nbsp;Products</span>
                   </div>
                 </th>
-                <th className='align-top text-left w-[10rem] cursor-pointer'>
+                <th className='align-top text-left w-[10rem]'>
                   <div className='inline-flex items-center gap-x-3'>
                     <span>Total&nbsp;Quantity</span>
                   </div>
