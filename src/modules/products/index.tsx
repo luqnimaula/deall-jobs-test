@@ -5,14 +5,15 @@ import useProductList from "@/hooks/useProductList"
 import clsxm from "@/utils/clsxm"
 import { moneyFormat } from "@/utils/number"
 import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import ProductItem from "./components/ProductItem"
 import {
   List,
   Grid
 } from 'react-feather'
 import useCategories from "@/hooks//useCategories"
-import Link from "next/link"
+import Select from "@/components/Select"
+import { slugToNormalText } from "@/utils/string"
 
 export type ProductsProps = {
   page: number
@@ -61,7 +62,7 @@ const Products: React.FC<ProductsProps> = ({
 
   return (
     <div className='w-full space-y-3'>
-      <div className="flex md:justify-between gap-2 items-center">
+      <div className="flex flex-wrap md:flex-nowrap md:justify-between gap-2 items-center">
         <div className='inline-flex gap-[1px]'>
           <button
             onClick={() => setViewType(ViewType.LIST)}
@@ -79,39 +80,39 @@ const Products: React.FC<ProductsProps> = ({
               viewType === ViewType.GRID ? 'bg-sky-400' : 'bg-gray-200 hover:bg-gray-300 dark:bg-theme-6 dark:text-gray-200'
             )}
           >
-            <Grid/>         
+            <Grid/>
           </button>
         </div>
-        <form method="GET" className='w-full md:w-[20rem]' action={'/products' + (query ? '/search' : '')}>
-          <Input
-            type='search'
-            name='q'
-            defaultValue={q}
-            placeholder='Search products...'
-            className='dark:bg-theme-6'
-            onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => setQuery((e.target as HTMLInputElement).value)}
-          />
-        </form>
-      </div>
-      {categories.length > 0 && (
-        <div className='flex flex-wrap gap-1 items-center dark:text-gray-200'>
-          <div className='text-xs'>
-            Categories:
+        <div className='w-full md:w-[26rem]'>
+          <div className='flex flex-wrap md:flex-nowrap gap-2'>
+            <form method="GET" className='w-full md:w-[20rem]' action={'/products' + (query ? '/search' : '')}>
+              <Input
+                type='search'
+                name='q'
+                defaultValue={q}
+                placeholder='Search products...'
+                className='dark:bg-theme-6'
+                onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => setQuery((e.target as HTMLInputElement).value)}
+              />
+            </form>
+            <Select
+              className='w-full md:w-auto'
+              placeholder='Select category'
+              defaultValue={router?.query?.slug}
+              onChange={(e) => router.push(e.currentTarget.value ? `/products/category/${e.currentTarget.value}` : '/products')}
+              list={useMemo(() => {
+                return [
+                  { value: '', label: 'All Categories' },
+                  ...categories.map(value => ({
+                    value,
+                    label: slugToNormalText(value)
+                  }))
+                ]
+              }, [categories])}
+            />
           </div>
-          {categories.map((value) => (
-            <Link
-              key={value}
-              href={`/products/category/${value}`}
-              className={clsxm(
-                'cursor-pointer px-2 py-1 text-xs rounded-md',
-                router?.query?.slug === value ? 'bg-sky-400 dark:bg-sky-500' : 'bg-gray-200 hover:bg-gray-300 dark:bg-theme-6 hover:dark:bg-theme-8'
-              )}
-            >
-              {value}
-            </Link>
-          ))}
         </div>
-      )}
+      </div>
       {viewType === ViewType.LIST && (
         <div className='w-full rounded-md shadow-sm px-4 py-3 mb-5 bg-white dark:bg-theme-6'>
           <div className='min-h-[26rem] overflow-x-auto'>
@@ -192,7 +193,7 @@ const Products: React.FC<ProductsProps> = ({
                           {row.stock}
                         </td>
                         <td className='align-top'>
-                          {row.category}
+                          {slugToNormalText(row.category)}
                         </td>
                       </tr>
                     )
