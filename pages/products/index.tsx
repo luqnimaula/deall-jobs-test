@@ -1,5 +1,5 @@
-import MainLayout from '@/layouts//MainLayout'
-import Products, { ProductsProps } from '@/modules//products'
+import MainLayout from '@/layouts/MainLayout'
+import Products, { ProductsProps } from '@/modules/products'
 import { GetServerSideProps } from 'next'
 import { memo } from 'react'
 

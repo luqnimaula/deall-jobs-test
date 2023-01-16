@@ -1,6 +1,6 @@
-import { Product } from "@/models//product"
-import clsxm from "@/utils//clsxm"
-import { moneyFormat } from "@/utils//number"
+import { Product } from "@/models/product"
+import clsxm from "@/utils/clsxm"
+import { moneyFormat } from "@/utils/number"
 import { memo } from "react"
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
 
 const ProductItem: React.FC<Props> = memo(({className, data}) => {
   return (
-    <div className={clsxm('rounded-md shadow-sm hover:shadow-lg bg-white dark:bg-theme-6', className ?? '')}>
+    <div className={clsxm('rounded-md shadow-sm hover:shadow-lg bg-white dark:bg-theme-6 dark:text-gray-200', className ?? '')}>
       <div className='w-full relative'>
         <img
           alt=''

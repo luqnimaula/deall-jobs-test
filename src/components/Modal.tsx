@@ -17,14 +17,14 @@ const Modal: React.FC<Props> = ({ children, show, onClose, title }) => {
           <div className='absolute inset-0 bg-gray-900 opacity-75' />
         </div>
         <div
-          className='inline-block align-center bg-white rounded-md text-left overflow-hidden shadow-xl transform transition-all w-full sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full lg:max-w-4xl xl:max-w-5xl'
+          className='inline-block align-center bg-white dark:bg-theme-6 rounded-md text-left overflow-hidden shadow-xl transform transition-all w-full sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full lg:max-w-4xl xl:max-w-5xl'
           role='dialog'
           aria-modal='true'
           aria-labelledby='modal-headline'
         >
-          <div className='w-full px-3 py-2 flex justify-between gap-5 items-start'>
+          <div className='w-full px-3 py-2 flex justify-between gap-5 items-start dark:text-gray-200'>
             <div className='font-normal text-xl'>{title}</div>
-            <X className='text-gray-500 cursor-pointer' onClick={onClose} />
+            <X className='cursor-pointer' onClick={onClose} />
           </div>
           <hr />
           <div className='p-3.5'>{children}</div>

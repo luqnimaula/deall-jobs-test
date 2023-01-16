@@ -57,7 +57,7 @@ const Pagination: React.FC<Props> = ({
 
   return (
     <div className='flex flex-wrap gap-2 md:flex-nowrap'>
-      <div className='w-full flex items-center gap-2'>
+      <div className='w-full flex items-center gap-2 dark:text-gray-200'>
         {showSizeChanger && (
           <select
             disabled={loading}

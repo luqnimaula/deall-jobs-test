@@ -1,5 +1,5 @@
-import MainLayout from '@/layouts//MainLayout'
-import Carts, { CartsProps } from '@/modules//carts'
+import MainLayout from '@/layouts/MainLayout'
+import Carts, { CartsProps } from '@/modules/carts'
 import { GetServerSideProps } from 'next'
 import { memo } from 'react'
 

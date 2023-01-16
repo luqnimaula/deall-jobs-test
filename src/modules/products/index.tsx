@@ -1,9 +1,9 @@
-import Input from "@/components//Input"
-import Pagination from "@/components//Pagination"
-import Spinner from "@/components//Spinner"
-import useProductList from "@/hooks//useProductList"
-import clsxm from "@/utils//clsxm"
-import { moneyFormat } from "@/utils//number"
+import Input from "@/components/Input"
+import Pagination from "@/components/Pagination"
+import Spinner from "@/components/Spinner"
+import useProductList from "@/hooks/useProductList"
+import clsxm from "@/utils/clsxm"
+import { moneyFormat } from "@/utils/number"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import ProductItem from "./components/ProductItem"
@@ -67,19 +67,19 @@ const Products: React.FC<ProductsProps> = ({
             onClick={() => setViewType(ViewType.LIST)}
             className={clsxm(
               'px-3 py-2 rounded-tl-md rounded-bl-md',
-              viewType === ViewType.LIST ? 'bg-sky-400' : 'bg-gray-200 hover:bg-gray-300'
+              viewType === ViewType.LIST ? 'bg-sky-400' : 'bg-gray-200 hover:bg-gray-300 dark:bg-theme-6 dark:text-gray-200'
             )}
           >
-            <List className='text-gray-600'/>
+            <List/>
           </button>
           <button
             onClick={() => setViewType(ViewType.GRID)}
             className={clsxm(
               'px-3 py-2 rounded-tr-md rounded-br-md',
-              viewType === ViewType.GRID ? 'bg-sky-400' : 'bg-gray-200 hover:bg-gray-300'
+              viewType === ViewType.GRID ? 'bg-sky-400' : 'bg-gray-200 hover:bg-gray-300 dark:bg-theme-6 dark:text-gray-200'
             )}
           >
-            <Grid className='text-gray-600'/>         
+            <Grid/>         
           </button>
         </div>
         <form method="GET" className='w-full md:w-[20rem]' action={'/products' + (query ? '/search' : '')}>
@@ -93,27 +93,29 @@ const Products: React.FC<ProductsProps> = ({
           />
         </form>
       </div>
-      <div className='flex flex-wrap gap-1 items-center'>
-        <div className='text-xs'>
-          Categories:
+      {categories.length > 0 && (
+        <div className='flex flex-wrap gap-1 items-center dark:text-gray-200'>
+          <div className='text-xs'>
+            Categories:
+          </div>
+          {categories.map((value) => (
+            <Link
+              key={value}
+              href={`/products/category/${value}`}
+              className={clsxm(
+                'cursor-pointer px-2 py-1 text-xs rounded-md',
+                router?.query?.slug === value ? 'bg-sky-400' : 'bg-gray-200 hover:bg-gray-300 dark:bg-theme-6'
+              )}
+            >
+              {value}
+            </Link>
+          ))}
         </div>
-        {categories.map((value) => (
-          <Link
-            key={value}
-            href={`/products/category/${value}`}
-            className={clsxm(
-              'cursor-pointer px-2 py-1 text-xs rounded-md',
-              router?.query?.slug === value ? 'bg-sky-400' : 'bg-gray-200 hover:bg-gray-300'
-            )}
-          >
-            {value}
-          </Link>
-        ))}
-      </div>
+      )}
       {viewType === ViewType.LIST && (
         <div className='w-full rounded-md shadow-sm px-4 py-3 mb-5 bg-white dark:bg-theme-6'>
           <div className='min-h-[26rem] overflow-x-auto'>
-            <table className='w-full table-auto' cellPadding={8}>
+            <table className='w-full table-auto dark:text-gray-200' cellPadding={8}>
               <thead className='text-sm'>
                 <tr>
                   <th className='align-top text-left w-[2rem]'>#</th>

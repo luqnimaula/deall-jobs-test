@@ -1,8 +1,8 @@
-import Pagination from "@/components//Pagination"
-import Spinner from "@/components//Spinner"
-import useCartList from "@/hooks//useCartList"
-import clsxm from "@/utils//clsxm"
-import { moneyFormat } from "@/utils//number"
+import Pagination from "@/components/Pagination"
+import Spinner from "@/components/Spinner"
+import useCartList from "@/hooks/useCartList"
+import clsxm from "@/utils/clsxm"
+import { moneyFormat } from "@/utils/number"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import DetailCartPopup from "./components/DetailCartPopup"
@@ -32,7 +32,7 @@ const Carts: React.FC<CartsProps> = ({
 
   return (
     <div className='w-full space-y-3'>
-      <div className='w-full rounded-md shadow-sm px-4 py-3 mb-5 bg-white dark:bg-theme-6'>
+      <div className='w-full rounded-md shadow-sm px-4 py-3 mb-5 bg-white dark:bg-theme-6 dark:text-gray-200'>
         <div className='min-h-[26rem] overflow-x-auto'>
           <table className='w-full table-auto' cellPadding={8}>
             <thead className='text-sm'>

@@ -1,10 +1,10 @@
-import Modal from "@/components//Modal"
-import Spinner from "@/components//Spinner"
-import useUser from "@/hooks//useUser"
-import { Cart } from "@/models//cart"
-import api from "@/utils//api"
-import clsxm from "@/utils//clsxm"
-import { moneyFormat } from "@/utils//number"
+import Modal from "@/components/Modal"
+import Spinner from "@/components/Spinner"
+import useUser from "@/hooks/useUser"
+import { Cart } from "@/models/cart"
+import api from "@/utils/api"
+import clsxm from "@/utils/clsxm"
+import { moneyFormat } from "@/utils/number"
 import { AxiosResponse } from "axios"
 import { memo, useEffect, useState } from "react"
 
@@ -51,7 +51,7 @@ const DetailCartPopup: React.FC<Props> = (props) => {
         ) : (
           <div className='w-full'>
             {detail ? (
-              <div className='w-full space-y-3'>
+              <div className='w-full space-y-3 dark:text-gray-200'>
                 <div className="grid grid-cols-12 gap-3 md:gap-5">
                   <div className="col-span-12 xl:col-span-4 border-[1px] rounded-md px-3 py-2 flex">
                     <div className='flex w-full items-center my-auto'>

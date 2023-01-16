@@ -1,3 +1,5 @@
+// dynamic import
+import DarkModeSwitcher from '@/components/DarkModeSwitcher'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -40,7 +42,7 @@ const MainLayout: React.FC<Props> = ({ title, children }) => {
       </Head>
       <main>
         <div className='grid grid-cols-12 lg:min-h-[100vh]'>
-          <div className='col-span-12 lg:col-span-3 xl:col-span-2'>
+          <div className='col-span-12 lg:col-span-3 xl:col-span-2 bg-white dark:bg-theme-6 dark:text-white'>
             <Link href='/' className='flex h-[7rem]'>
               <div className='m-auto text-center'>
                 <div className='text-3xl font-semibold'>Dashboard</div>
@@ -54,8 +56,8 @@ const MainLayout: React.FC<Props> = ({ title, children }) => {
                   key={index}
                   href={href}
                   className={clsxm(
-                    'block w-full px-4 py-3 hover:bg-gray-50',
-                    active && 'bg-sky-50 hover:bg-sky-50 border-l-4 border-sky-500'
+                    'block w-full px-4 py-3',
+                    active ? 'bg-sky-50 dark:bg-theme-7 border-l-4 border-sky-500' : 'hover:bg-gray-50 hover:dark:bg-theme-5'
                   )}
                 >
                   {title}
@@ -63,7 +65,14 @@ const MainLayout: React.FC<Props> = ({ title, children }) => {
               ))}
             </div>
           </div>
-          <div className='col-span-12 lg:col-span-9 xl:col-span-10 p-2 md:p-5 bg-gray-100 h-full'>{children}</div>
+          <div className='col-span-12 lg:col-span-9 xl:col-span-10 bg-gray-100 dark:bg-theme-7 h-full'>
+            <div className='flex justify-end p-2 md:p-5 bg-white shadow-sm dark:bg-theme-6'>
+              <DarkModeSwitcher/>
+            </div>
+            <div className='p-2 md:p-5'>
+              {children}
+            </div>
+          </div>
         </div>
       </main>
     </>
