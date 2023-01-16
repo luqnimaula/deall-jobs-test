@@ -5,8 +5,8 @@ const HomePage: React.FC = () => {
   return (
     <MainLayout title='Dashboard'>
       <div className="flex min-h-[60vh]">
-        <div className="m-auto">
-          Welcome
+        <div className="m-auto text-2xl dark:text-gray-200">
+          Welcome!
         </div>
       </div>
     </MainLayout>

@@ -1,28 +1,25 @@
-import MainLayout from "@/layouts/MainLayout";
-import Products, { ProductsProps } from "@/modules/products";
-import { GetServerSideProps } from "next";
-import { memo } from "react";
+import MainLayout from '@/layouts/MainLayout'
+import Products from '@/modules/products'
+import { NextRouter, withRouter } from 'next/router'
+import { useMemo } from 'react'
 
-const PageProductsCategory: React.FC<ProductsProps> = (props) => {
+type Props = {
+  router: NextRouter
+}
+
+const PageProductsCategory: React.FC<Props> = ({router}) => {
+  const {page, limit} = router.query ?? {}
+  const pageNumber = useMemo(() => page ? (isNaN(parseInt(page as string)) ? 1 : parseInt(page as string)) : 1, [page])
+  const limitNumber = useMemo(() => limit ? (isNaN(parseInt(limit as string)) ? 10 : parseInt(limit as string)) : 10, [limit])
+
   return (
-    <MainLayout title='Products'>
-      <Products {...props}/>
+    <MainLayout title='Products by Category'>
+      <Products
+        page={pageNumber}
+        limit={limitNumber}
+      />
     </MainLayout>
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({query}) => {
-  const {
-    page,
-    limit
-  } = query
-
-  return {
-    props: {
-      page: page ? (isNaN(parseInt(page as string)) ? 1 : parseInt(page as string)) : 1,
-      limit: limit ? (isNaN(parseInt(limit as string)) ? 10 : parseInt(limit as string)) : 10
-    }
-  }
-}
-
-export default memo(PageProductsCategory)
+export default withRouter(PageProductsCategory)

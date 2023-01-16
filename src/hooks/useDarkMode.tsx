@@ -36,21 +36,25 @@ type DarkModeProviderProps = {
   children: React.ReactNode
 }
 
+
 export const DarkModeProvider:React.FC<DarkModeProviderProps> = ({ children }) => {
-	const [isDarkMode, setIsDarkMode] = useState(
-    typeof window !== 'undefined' ?
-      localStorage.getItem(THEME_STORAGE_KEY) === THEME_TYPE.DARK : false
-	)
+	const [isDarkMode, setIsDarkMode] = useState(false)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && localStorage.getItem(THEME_STORAGE_KEY) === THEME_TYPE.DARK) setIsDarkMode(true)
+  }, [])
 
 	useEffect(() => {
-    if (typeof window !== 'undefined') {
-      if (isDarkMode) {
-        document.body.classList.add('dark')
-      } else {
-        document.body.classList.remove('dark')
+    setTimeout(() => {
+      if (typeof window !== 'undefined') {
+        if (isDarkMode) {
+          document.body.classList.add('dark')
+        } else {
+          document.body.classList.remove('dark')
+        }
+        localStorage.setItem(THEME_STORAGE_KEY, isDarkMode ? THEME_TYPE.DARK : THEME_TYPE.LIGHT) 
       }
-      localStorage.setItem(THEME_STORAGE_KEY, isDarkMode ? THEME_TYPE.DARK : THEME_TYPE.LIGHT) 
-    }
+    }, 100)
 	}, [isDarkMode])
 
 	return (
