@@ -193,7 +193,7 @@ const Products: React.FC<ProductsProps> = ({
                           {row.stock}
                         </td>
                         <td className='align-top'>
-                          {slugToNormalText(row.category)}
+                          {slugToNormalText(row.category as unknown as string)}
                         </td>
                       </tr>
                     )
