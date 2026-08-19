@@ -24,7 +24,7 @@ const ProductItem: React.FC<Props> = memo(({className, data}) => {
         <div className='w-full'>
           <div className='text-md font-semibold mb-2'>{data.title}</div>
           <div className='text-xs'>{data.brand}</div>
-          <div className='text-xs mt-0.5'>{slugToNormalText(data.category)}</div>
+          <div className='text-xs mt-0.5'>{slugToNormalText(data.category.name)}</div>
         </div>
         <hr/>
         <div className='flex justify-between'>

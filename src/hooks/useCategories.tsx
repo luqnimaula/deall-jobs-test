@@ -9,8 +9,8 @@ export default () => {
   const getCategories = useCallback(async () => {
     try {
       setLoading(true)
-      const { data }: AxiosResponse<string[]> = await api.get('/products/categories')
-      setCategories(data ?? [])
+      const { data }: AxiosResponse<Array<{ name: string }>> = await api.get('/products/categories')
+      setCategories((data ?? []).map(r => r.name))
     } catch (error) {
       console.log(error)
     } finally {

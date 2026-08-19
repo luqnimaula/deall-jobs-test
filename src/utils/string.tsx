@@ -1,5 +1,5 @@
 export const slugToNormalText = (slug: string): string => {
-  const words = slug.split('-')
+  const words = (slug || '').split('-')
 
   for (let i = 0; i < words.length; i++) {
     const word = words[i]
